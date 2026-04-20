@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashley Mack — Power Without Permission</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy:  #0F1C2E;
+    --navy2: #162236;
+    --navy3: #1a2a40;
+    --gold:  #C9952A;
+    --gold2: #E8B84B;
+    --white: #F5F5F0;
+    --dim:   rgba(245,245,240,0.62);
+    --dim2:  rgba(245,245,240,0.14);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    background: rgba(15,28,46,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,149,42,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 56px;
+    height: 66px;
+  }
+  .nav-name {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 56px 80px;
+    background: var(--navy);
+  }
+  .hero-inner {
+    max-width: 1120px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 88px;
+  }
+  .hero-text { flex: 1; }
+  .hero-eyebrow {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 30px;
+  }
+  .hero-title {
+    font-size: clamp(44px, 5.8vw, 84px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+  }
+  .hero-subtitle {
+    font-size: clamp(18px, 2.2vw, 28px);
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 40px;
+    line-height: 1.3;
+  }
+  .hero-rule { width: 52px; height: 3px; background: var(--gold); border-radius: 2px; margin-bottom: 28px; }
+  .hero-name {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .hero-role {
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+    line-height: 1.7;
+  }
+  .hero-photo {
+    flex-shrink: 0;
+    width: 360px;
+    height: 440px;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 2px solid rgba(201,149,42,0.22);
+    position: relative;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  /* ── SHARED ── */
+  .section-wrap { max-width: 1120px; margin: 0 auto; padding: 96px 56px; }
+  .section-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .section-rule { width: 52px; height: 3px; background: var(--gold); border-radius: 2px; margin: 18px 0 40px; }
+  .section-heading {
+    font-size: clamp(28px, 3.4vw, 50px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  hr.divider {
+    border: none;
+    border-top: 1px solid rgba(201,149,42,0.13);
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  /* ── KEYNOTES ── */
+  #keynotes { background: var(--navy); }
+  .keynote-intro {
+    max-width: 640px;
+    font-size: clamp(16px, 1.6vw, 19px);
+    color: var(--dim);
+    line-height: 1.8;
+    margin: 24px 0 52px;
+  }
+  .keynotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3px;
+  }
+  .keynote-item {
+    background: var(--navy2);
+    border-top: 3px solid var(--gold);
+    padding: 36px 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .keynote-num {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(201,149,42,0.55);
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .keynote-name {
+    font-size: clamp(15px, 1.5vw, 18px);
+    color: var(--white);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* ── AUDIENCES ── */
+  #audiences { background: var(--navy3); }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-top: 40px;
+  }
+  .col-card {
+    background: var(--navy2);
+    border-top: 3px solid var(--gold);
+    padding: 44px 48px;
+  }
+  .col-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+  .col-list { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+  .col-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: clamp(15px, 1.45vw, 17px);
+    color: var(--white);
+    line-height: 1.5;
+  }
+  .col-list li::before {
+    content: '—';
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── STATS BAR ── */
+  #stats {
+    background: var(--gold);
+    padding: 0;
+  }
+  .stats-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 52px 56px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .stat-item {
+    text-align: center;
+    padding: 0 24px;
+    border-right: 1px solid rgba(15,28,46,0.18);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-number {
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-family: 'Georgia', serif;
+    margin-bottom: 10px;
+  }
+  .stat-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(15,28,46,0.65);
+    line-height: 1.4;
+  }
+
+  /* ── BIO ── */
+  #bio { background: var(--navy); }
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 80px;
+    align-items: start;
+    margin-top: 8px;
+  }
+  .bio-text p {
+    font-size: clamp(15px, 1.5vw, 18px);
+    color: var(--dim);
+    line-height: 1.85;
+    margin-bottom: 22px;
+  }
+  .bio-text p:last-child { margin-bottom: 0; }
+  .sidebar-card {
+    background: var(--navy2);
+    border-top: 3px solid var(--gold);
+    padding: 36px 36px 40px;
+    margin-bottom: 3px;
+  }
+  .sidebar-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+  }
+  .sidebar-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .sidebar-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--white);
+    line-height: 1.45;
+  }
+  .sidebar-list li::before {
+    content: '·';
+    color: var(--gold);
+    font-size: 18px;
+    flex-shrink: 0;
+    line-height: 1.2;
+  }
+
+  /* ── FEATURED ── */
+  #featured { background: var(--navy2); }
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 34px;
+    border-radius: 2px;
+    margin-top: 36px;
+    transition: background 0.2s;
+  }
+  .download-btn:hover { background: var(--gold2); }
+  .download-note {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    color: var(--dim);
+    margin-top: 14px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--navy); text-align: center; }
+  .contact-avail {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+  .contact-name {
+    font-size: clamp(30px, 3.8vw, 56px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+  .contact-rule { width: 52px; height: 3px; background: var(--gold); border-radius: 2px; margin: 0 auto 28px; }
+  .contact-email {
+    font-family: 'Arial', sans-serif;
+    font-size: clamp(16px, 1.8vw, 22px);
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+    display: block;
+    margin-bottom: 18px;
+  }
+  .contact-email:hover { color: var(--gold2); }
+  .contact-tag {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy2);
+    border-top: 1px solid rgba(201,149,42,0.12);
+    text-align: center;
+    padding: 26px 56px;
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: rgba(245,245,240,0.22);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .section-wrap { padding: 72px 24px; }
+    #hero { padding: 100px 24px 64px; }
+    .hero-inner { flex-direction: column-reverse; gap: 40px; }
+    .hero-photo { width: 100%; height: 320px; }
+    .two-col { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: repeat(2,1fr); gap: 3px; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(15,28,46,0.18); padding: 24px; }
+    .stat-item:nth-child(odd) { border-right: 1px solid rgba(15,28,46,0.18); }
+    .stat-item:last-child { border-bottom: none; }
+    .bio-grid { grid-template-columns: 1fr; gap: 40px; }
+    .keynotes-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#hero" class="nav-name">Ashley Mack</a>
+  <ul class="nav-links">
+    <li><a href="#keynotes">Keynotes</a></li>
+    <li><a href="#audiences">Audiences</a></li>
+    <li><a href="#bio">About</a></li>
+    <li><a href="#featured">Speaker Sheet</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Keynote Presentation</p>
+      <h1 class="hero-title">Power Without<br>Permission</h1>
+      <p class="hero-subtitle">Building Influence Before the Title</p>
+      <div class="hero-rule"></div>
+      <p class="hero-name">Ashley Mack</p>
+      <p class="hero-role">
+        Enterprise Transformation Leader<br>
+        Keynote Speaker on Power &amp; Influence<br>
+        Board Chair, NAAAP
+      </p>
+    </div>
+    <div class="hero-photo">
+      <img src="file:///C:/Users/ashley.mack/OneDrive%20-%20Accenture/Pictures/Headshot%202.png"
+           alt="Ashley Mack">
+    </div>
+  </div>
+</section>
+
+<!-- ── KEYNOTES ── -->
+<section id="keynotes">
+  <div class="section-wrap">
+    <p class="section-label">Signature Keynotes</p>
+    <div class="section-rule"></div>
+    <p class="keynote-intro">Ashley speaks on power, influence, executive presence, and strategic visibility in complex organizations. Each keynote is practical, research-informed, and tailored to the audience.</p>
+    <div class="keynotes-grid">
+      <div class="keynote-item">
+        <span class="keynote-num">01</span>
+        <span class="keynote-name">Power Without Permission</span>
+      </div>
+      <div class="keynote-item">
+        <span class="keynote-num">02</span>
+        <span class="keynote-name">Influence Before the Title</span>
+      </div>
+      <div class="keynote-item">
+        <span class="keynote-num">03</span>
+        <span class="keynote-name">Executive Presence in Complex Environments</span>
+      </div>
+      <div class="keynote-item">
+        <span class="keynote-num">04</span>
+        <span class="keynote-name">Strategic Visibility in Competitive Organizations</span>
+      </div>
+      <div class="keynote-item">
+        <span class="keynote-num">05</span>
+        <span class="keynote-name">Leading Across Global Teams</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── AUDIENCES ── -->
+<section id="audiences">
+  <div class="section-wrap">
+    <p class="section-label">For Audiences &amp; Organizers</p>
+    <div class="two-col">
+      <div class="col-card">
+        <p class="col-title">What Audiences Will Gain</p>
+        <ul class="col-list">
+          <li>Build credibility through reliability, not just expertise</li>
+          <li>Increase visibility without needing to be the loudest voice</li>
+          <li>Lead and influence across teams without formal authority</li>
+          <li>Navigate complex, global environments with confidence</li>
+        </ul>
+      </div>
+      <div class="col-card">
+        <p class="col-title">Who This Is For</p>
+        <ul class="col-list">
+          <li>Early to mid-career professionals</li>
+          <li>High performers navigating complex organizations</li>
+          <li>Global and cross-functional teams</li>
+          <li>Emerging leaders building influence</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-number">15+</div>
+      <div class="stat-label">Years Corporate<br>&amp; Consulting Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">30</div>
+      <div class="stat-label">Chapters — National<br>Strategy Leadership</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">27K</div>
+      <div class="stat-label">Stakeholders<br>Impacted</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">143%</div>
+      <div class="stat-label">Revenue Growth<br>Achieved</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BIO ── -->
+<section id="bio">
+  <div class="section-wrap">
+    <p class="section-label">About Ashley</p>
+    <div class="section-rule"></div>
+    <div class="bio-grid">
+      <div class="bio-text">
+        <p>Ashley Mack is a corporate transformation leader and Board Chair of the National Association of Asian American Professionals, the nation's oldest and largest Asian professional organization. As the youngest Executive Director in its history, she led national strategy across 30 chapters and 27,000 stakeholders, delivering 143% revenue growth and strengthening enterprise partnerships nationwide.</p>
+        <p>With over 15 years of experience across newly launched organizations and Fortune 100 companies, Ashley leads enterprise-scale transformation initiatives and oversees multi-million-dollar portfolios. She directs cross-functional global teams and partners with C-suite leaders to align strategy with execution and deliver measurable results.</p>
+        <p>Known for building influence quickly in high-stakes environments, she translates ambiguity into structured action and scalable performance.</p>
+        <p>A 2025 Outstanding Atlanta Honoree and 2023 Atlanta Business Chronicle 40 Under 40 Honoree, Ashley speaks on power, influence, executive presence, and strategic visibility in complex organizations.</p>
+      </div>
+      <div class="bio-sidebar">
+        <div class="sidebar-card">
+          <p class="sidebar-title">Leadership &amp; Honors</p>
+          <ul class="sidebar-list">
+            <li>Board Chair, NAAAP</li>
+            <li>2025 Outstanding Atlanta Honoree</li>
+            <li>2023 Atlanta Business Chronicle 40 Under 40</li>
+            <li>CAUSE Leadership Institute Fellow</li>
+          </ul>
+        </div>
+        <div class="sidebar-card">
+          <p class="sidebar-title">Current Role</p>
+          <ul class="sidebar-list">
+            <li>Enterprise Transformation Leader</li>
+            <li>Keynote Speaker on Power &amp; Influence</li>
+            <li>Multi-million-dollar portfolio oversight</li>
+            <li>Cross-functional global team leadership</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── FEATURED ── -->
+<section id="featured">
+  <div class="section-wrap">
+    <p class="section-label">Speaker Resources</p>
+    <div class="section-rule"></div>
+    <h2 class="section-heading">Speaker Overview</h2>
+    <p style="font-family:'Arial',sans-serif;font-size:15px;color:var(--dim);max-width:520px;line-height:1.75;margin-top:20px;">
+      Download the full speaker one-sheet for event details, audience outcomes, bio, and booking information.
+    </p>
+    <a href="Ashley_Mack_Keynote_Speaker_OneSheet.pdf" class="download-btn" download>
+      &#8595;&nbsp; Download Speaker Sheet
+    </a>
+    <p class="download-note">PDF &nbsp;·&nbsp; Power Without Permission &nbsp;·&nbsp; Ashley Mack</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="section-wrap" style="text-align:center;">
+    <p class="contact-avail">Available for Keynote Speaking Engagements</p>
+    <h2 class="contact-name">Get in Touch</h2>
+    <div class="contact-rule"></div>
+    <a href="mailto:ashley@ashleymackconsulting.com" class="contact-email">ashley@ashleymackconsulting.com</a>
+    <p class="contact-tag">Ashley Mack &nbsp;·&nbsp; Power Without Permission</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  &copy; 2026 Ashley Mack &nbsp;·&nbsp; Power Without Permission
+</footer>
+
+</body>
+</html>
