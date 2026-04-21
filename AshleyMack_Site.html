@@ -406,6 +406,7 @@
     .stat-item:last-child { border-bottom: none; }
     .bio-grid { grid-template-columns: 1fr; gap: 40px; }
     .keynotes-grid { grid-template-columns: 1fr; }
+    #featured .section-wrap > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -433,9 +434,8 @@
       <div class="hero-rule"></div>
       <p class="hero-name">Ashley Mack</p>
       <p class="hero-role">
-        Enterprise Transformation Leader<br>
-        <span style="color:var(--gold);font-weight:700;letter-spacing:0.12em;">Keynote Speaker on Power &amp; Influence</span><br>
-        Board Chair, NAAAP
+        <span style="color:var(--gold);font-weight:700;font-size:15px;letter-spacing:0.13em;">Keynote Speaker on Power &amp; Influence</span><br>
+        Enterprise Transformation Leader &nbsp;·&nbsp; Board Chair, NAAAP
       </p>
     </div>
     <div class="hero-photo">
@@ -448,6 +448,7 @@
 <section id="keynotes">
   <div class="section-wrap">
     <p class="section-label">Signature Keynotes</p>
+    <h2 class="section-heading">Power Without Permission</h2>
     <div class="section-rule"></div>
     <p class="keynote-intro">A practical keynote that helps professionals build credibility, increase visibility, and lead with influence in complex organizations before formal authority is established.</p>
     <div class="keynotes-grid">
@@ -481,7 +482,9 @@
 <section id="audiences">
   <div class="section-wrap">
     <p class="section-label">For Audiences &amp; Organizers</p>
-    <div class="two-col">
+    <h2 class="section-heading">Built for Your Audience</h2>
+    <div class="section-rule"></div>
+    <div class="two-col" style="margin-top:0;">
       <div class="col-card">
         <p class="col-title">What Audiences Will Gain</p>
         <ul class="col-list">
@@ -508,7 +511,7 @@
 <section id="stats">
   <div class="stats-inner">
     <div class="stat-item">
-      <div class="stat-number">15+</div>
+      <div class="stat-number">17</div>
       <div class="stat-label">Years Corporate<br>&amp; Consulting Experience</div>
     </div>
     <div class="stat-item">
@@ -534,8 +537,8 @@
     <div class="bio-grid">
       <div class="bio-text">
         <p>Ashley Mack is a corporate transformation leader and Board Chair of the National Association of Asian American Professionals, the nation's oldest and largest Asian professional organization. As the youngest Executive Director in its history, she led national strategy across 30 chapters and 27,000 stakeholders, delivering 143% revenue growth and strengthening enterprise partnerships nationwide.</p>
-        <p>With over 15 years of experience across newly launched organizations and Fortune 100 companies, Ashley leads enterprise-scale transformation initiatives and oversees multi-million-dollar portfolios. She directs cross-functional global teams and partners with C-suite leaders to align strategy with execution and deliver measurable results.</p>
-        <p>Known for building influence quickly in high-stakes environments, Ashley helps professionals translate ambiguity into structured action and scalable performance.</p>
+        <p>With 17 years of experience across newly launched organizations and Fortune 100 companies, Ashley leads enterprise-scale transformation initiatives and oversees multi-million-dollar portfolios. She directs cross-functional global teams and partners with C-suite leaders to align strategy with execution and deliver measurable results.</p>
+        <p>Known for building influence quickly in high-stakes environments, Ashley helps professionals translate ambiguity into structured action and measurable results.</p>
         <p>A 2025 Outstanding Atlanta Honoree and 2023 Atlanta Business Chronicle 40 Under 40 Honoree, Ashley speaks on power, influence, executive presence, and strategic visibility in complex organizations.</p>
       </div>
       <div class="bio-sidebar">
@@ -568,15 +571,27 @@
 <section id="featured">
   <div class="section-wrap">
     <p class="section-label">Speaker Resources</p>
+    <h2 class="section-heading">Speaker One-Sheet</h2>
     <div class="section-rule"></div>
-    <h2 class="section-heading">Speaker Overview</h2>
-    <p style="font-family:'Arial',sans-serif;font-size:15px;color:var(--dim);max-width:520px;line-height:1.75;margin-top:20px;">
-      Download the full speaker one-sheet for event details, audience outcomes, bio, and booking information.
-    </p>
-    <a href="Ashley_Mack_Keynote_Speaker_OneSheet.pdf" class="download-btn" download>
-      &#8595;&nbsp; Download Speaker Sheet
-    </a>
-    <p class="download-note">PDF &nbsp;·&nbsp; Power Without Permission &nbsp;·&nbsp; Ashley Mack</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;max-width:860px;">
+      <div style="background:var(--navy2);border-top:3px solid var(--gold);padding:44px 48px;">
+        <p style="font-family:'Arial',sans-serif;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">What's Inside</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
+          <li style="display:flex;align-items:flex-start;gap:14px;font-size:15px;color:var(--white);line-height:1.5;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">—</span> Keynote overview &amp; key outcomes</li>
+          <li style="display:flex;align-items:flex-start;gap:14px;font-size:15px;color:var(--white);line-height:1.5;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">—</span> Audience takeaways</li>
+          <li style="display:flex;align-items:flex-start;gap:14px;font-size:15px;color:var(--white);line-height:1.5;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">—</span> Speaker bio &amp; credentials</li>
+          <li style="display:flex;align-items:flex-start;gap:14px;font-size:15px;color:var(--white);line-height:1.5;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">—</span> Booking information</li>
+        </ul>
+      </div>
+      <div style="background:var(--navy3);border-top:3px solid rgba(201,149,42,0.35);padding:44px 48px;display:flex;flex-direction:column;justify-content:center;">
+        <p style="font-family:'Arial',sans-serif;font-size:13px;color:var(--dim);line-height:1.75;margin-bottom:28px;">Full event details, audience outcomes, bio, and booking information — in one page.</p>
+        <!-- UPLOAD: Replace href below with your PDF URL (GitHub raw link or Google Drive direct link) -->
+        <a href="mailto:ashley.mack@accenture.com?subject=Speaker%20Sheet%20Request%20%E2%80%94%20Ashley%20Mack" class="download-btn" style="margin-top:0;">
+          &#8595;&nbsp; Request Speaker Sheet
+        </a>
+        <p class="download-note" style="margin-top:12px;">PDF &nbsp;·&nbsp; Power Without Permission</p>
+      </div>
+    </div>
   </div>
 </section>
 
