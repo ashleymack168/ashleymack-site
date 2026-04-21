@@ -252,9 +252,7 @@
   .stat-item {
     text-align: center;
     padding: 0 24px;
-    border-right: 1px solid rgba(15,28,46,0.18);
   }
-  .stat-item:last-child { border-right: none; }
   .stat-number {
     font-size: clamp(32px, 4vw, 56px);
     font-weight: 700;
@@ -348,6 +346,26 @@
     letter-spacing: 0.06em;
   }
 
+  /* ── SPEAKER SHEET ── */
+  .speaker-sheet-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+  .speaker-sheet-card {
+    background: var(--navy2);
+    border-top: 3px solid var(--gold);
+    padding: 44px 48px;
+  }
+  .speaker-sheet-cta {
+    background: var(--navy3);
+    border-top: 3px solid rgba(201,149,42,0.35);
+    padding: 44px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   /* ── CONTACT ── */
   #contact { background: var(--navy); text-align: center; }
   .contact-avail {
@@ -407,12 +425,11 @@
     .hero-photo { width: 100%; height: 320px; }
     .two-col { grid-template-columns: 1fr; }
     .stats-inner { grid-template-columns: repeat(2,1fr); gap: 3px; }
-    .stat-item { border-right: none; border-bottom: 1px solid rgba(15,28,46,0.18); padding: 24px; }
-    .stat-item:nth-child(odd) { border-right: 1px solid rgba(15,28,46,0.18); }
-    .stat-item:last-child { border-bottom: none; }
+    .stat-item { padding: 24px; }
     .bio-grid { grid-template-columns: 1fr; gap: 40px; }
     .keynotes-grid { grid-template-columns: 1fr; }
-    #featured .section-wrap > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr; }
+    .speaker-sheet-grid { grid-template-columns: 1fr; }
+    .speaker-sheet-card, .speaker-sheet-cta { padding: 36px 28px; }
   }
 
   /* ── COLOR RHYTHM: Alternating light/dark sections ── */
@@ -601,18 +618,18 @@
     <p class="section-label">Speaker Resources</p>
     <h2 class="section-heading">Speaker One-Sheet</h2>
     <div class="section-rule"></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;max-width:860px;">
-      <div style="background:var(--navy2);border-top:3px solid var(--gold);padding:44px 48px;">
-        <p style="font-family:'Arial',sans-serif;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">What's Inside</p>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
-          <li style="display:flex;align-items:flex-start;gap:14px;font-size:15px;color:var(--white);line-height:1.5;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">—</span> Keynote overview &amp; key outcomes</li>
-          <li style="display:flex;align-items:flex-start;gap:14px;font-size:15px;color:var(--white);line-height:1.5;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">—</span> Audience takeaways</li>
-          <li style="display:flex;align-items:flex-start;gap:14px;font-size:15px;color:var(--white);line-height:1.5;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">—</span> Speaker bio &amp; credentials</li>
-          <li style="display:flex;align-items:flex-start;gap:14px;font-size:15px;color:var(--white);line-height:1.5;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">—</span> Booking information</li>
+    <div class="speaker-sheet-grid">
+      <div class="speaker-sheet-card">
+        <p class="col-title">What's Inside</p>
+        <ul class="col-list">
+          <li>Keynote overview &amp; key outcomes</li>
+          <li>Audience takeaways</li>
+          <li>Speaker bio &amp; credentials</li>
+          <li>Booking information</li>
         </ul>
       </div>
-      <div style="background:var(--navy3);border-top:3px solid rgba(201,149,42,0.35);padding:44px 48px;display:flex;flex-direction:column;justify-content:center;">
-        <p style="font-family:'Arial',sans-serif;font-size:13px;color:var(--dim);line-height:1.75;margin-bottom:28px;">Full event details, audience outcomes, bio, and booking information — in one page.</p>
+      <div class="speaker-sheet-cta">
+        <p style="font-family:'Montserrat',Arial,sans-serif;font-size:13px;color:var(--dim);line-height:1.75;margin-bottom:28px;">Full event details, audience outcomes, bio, and booking information — in one page.</p>
         <!-- UPLOAD: Replace href below with your PDF URL (GitHub raw link or Google Drive direct link) -->
         <a href="mailto:ashley.mack@accenture.com?subject=Speaker%20Sheet%20Request%20%E2%80%94%20Ashley%20Mack" class="download-btn" style="margin-top:0;">
           &#8595;&nbsp; Request Speaker Sheet
